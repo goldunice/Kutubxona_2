@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alive author books</title>
+</head>
+<body>
+<br>
+<hr>
+{%for i in alive_author_books %}
+<h2>Kitob nomi -- {{i.nom}}, Muallif ismi -- {{i.muallif.ism}}</h2>
+{% endfor %}
+</body>
+</html>

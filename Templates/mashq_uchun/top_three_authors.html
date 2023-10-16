@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top three authors</title>
+</head>
+<body>
+<br>
+<hr>
+{% for i in top_three_authors %}
+<h2>{{i.ism}} -- {{i.kitoblar_soni}}</h2>
+{% endfor %}
+
+</body>
+</html>

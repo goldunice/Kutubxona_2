@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All authors</title>
+</head>
+<body>
+<br><br><br>
+<hr>
+<h1>All authors: </h1>
+{% for author in all_authors %}
+<br>
+<h2>{{author.id}} -- <a href="/selected_author/{{author.id}}/">{{author.ism}}</a> -- {{author.tugilgan_sana}}</h2>
+
+{% endfor %}
+
+</body>
+</html>

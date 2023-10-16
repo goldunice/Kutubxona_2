@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitoblar</title>
+</head>
+<body>
+    <h1>Tizimdagi barcha kitoblar royxati</h1>
+    <br>
+    <hr>
+    {% for kitob in kitoblar%}
+    <br>
+    <h1>{{kitob.id}}. <a href="/kitoblar/{{kitob.id}}/">{{kitob.nom}}</a> ({{kitob.muallif.ism}})</h1><br>
+
+    {%endfor%}
+
+</body>
+</html>

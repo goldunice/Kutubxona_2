@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The last three record</title>
+</head>
+<body>
+<br>
+<hr>
+{% for i in the_last_three_record %}
+<h2>{{i.talaba.ism}} -- {{i.kitob.nom}} -- {{i.olingan_sana}}</h2>
+{% endfor %}
+
+
+</body>
+</html>

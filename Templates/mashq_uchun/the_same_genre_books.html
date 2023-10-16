@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The same genre books</title>
+</head>
+<body>
+<br>
+<hr>
+{% for i in the_same_genre_books %}
+<h2>Kitob nomi -- {{i.nom}}, janri -- {{i.janr}}</h2>
+{% endfor %}
+
+</body>
+</html>

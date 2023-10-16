@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The oldest authors</title>
+</head>
+<body>
+<br>
+<hr>
+{% for i in the_oldest_authors %}
+<h2>Muallif ismi -- {{i.ism}}, tug'ilgan sanasi -- {{i.tugilgan_sana}}</h2>
+{% endfor %}
+</body>
+</html>

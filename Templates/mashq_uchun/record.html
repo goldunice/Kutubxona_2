@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record</title>
+</head>
+<body>
+<br>
+<hr>
+{% for r in record %}
+<div>
+    <h2>ID -- {{r.id}}</h2>
+    <h2>Talaba ism-- {{r.talaba.ism}}</h2>
+    <h2>Kitob nomi -- {{r.kitob.nom}}</h2>
+    <h2>Kutubxonachi -- {{r.kutubxonachi.ism}}</h2>
+    <h2>Olingan sana -- {{r.olingan_sana}}</h2>
+    <h2>Qaytardi -- {{r.qaytardi}}</h2>
+    <h2>Qaytarish sanasi -- {{r.qaytarish_sana}}</h2>
+</div>
+<hr>
+{% endfor %}
+</body>
+</html>
