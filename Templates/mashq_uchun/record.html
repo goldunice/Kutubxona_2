@@ -7,6 +7,11 @@
 <body>
 <br>
 <hr>
+<br>
+<form method="get">
+    <input type="text" placeholder="search" name="search_word">
+    <button>search</button>
+</form>
 {% for r in record %}
 <div>
     <h2>ID -- {{r.id}}</h2>

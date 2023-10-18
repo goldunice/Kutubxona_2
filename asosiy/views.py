@@ -19,6 +19,13 @@ def ayol_muallif_kitoblari(request):
 
 
 def all_books(request):
+    if request.method == 'POST':
+        a = request.POST.get("ism")
+        b = request.POST.get("kitob_s")
+        c = request.POST.get("kurs")
+        Muallif.objects.create(ism=a, kitob_soni=b, kurs=c)
+        return redirect('/all_authors/')
+
     content = {
         "kitoblar": Kitob.objects.all()
     }
@@ -33,8 +40,12 @@ def kitob(request, son):
 
 
 def all_authors(request):
+    word = request.GET.get("search_word")
+    result = Muallif.objects.all()
+    if word:
+        result = result.filter(ism__contains=word)
     content = {
-        "all_authors": Muallif.objects.all()
+        "all_authors": result
     }
     return render(request, 'mashq_uchun/all_authors.html', content)
 
@@ -66,8 +77,12 @@ def selected_book(request, son):
 
 
 def record(request):
+    word = request.GET.get("search_word")
+    result = Record.objects.all()
+    if word:
+        result = result.filter(talaba__ism=word)
     content = {
-        "record": Record.objects.all()
+        "record": result
     }
     return render(request, 'mashq_uchun/record.html', content)
 
@@ -145,3 +160,28 @@ def graduated_student(request):
 def delete_book(request, son):
     Kitob.objects.get(id=son).delete()
     return redirect("/all_books/")
+
+
+def delete_author(request, son):
+    Muallif.objects.get(id=son).delete()
+    return redirect("/all_authors/")
+
+
+def delete_record(request, son):
+    Record.objects.get(id=son).delete()
+    return redirect("/record/")
+
+
+def talabalar(request):
+    if request.method == 'POST':
+        a = request.POST.get("ism")
+        b = request.POST.get("kitob_soni")
+        c = request.POST.get("kurs")
+        Talaba(ism=a, kitob_soni=b, kurs=c).save()
+
+        return redirect('/talabalar/')
+
+    content = {
+        "talabalar": Talaba.objects.all()
+    }
+    return render(request, "mashq_uchun/talabalar.html", content)

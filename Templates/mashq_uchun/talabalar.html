@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talabalar</title>
+</head>
+<body>
+<br>
+ {% for i in talabalar %}
+ <h2>ID -- {{i.id}}, Ismi -- {{i.ism}}, Kurs -- {{i.kurs}}, Kitoblari soni -- {{i.kitob_soni}}</h2>
+ {% endfor %}
+
+<br>
+<hr>
+<br>
+<form method="post"> {% csrf_token %}
+    <input type="text" placeholder="Ism yozing" name="ism">
+    <input type="number" placeholder="Kursini yozing" name="kurs">
+    <input type="number" placeholder="Kitoblar sonini yozing" name="kitob_soni">
+    <button>Qo'shish</button>
+</form>
+
+</body>
+</html>
