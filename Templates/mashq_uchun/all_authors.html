@@ -18,6 +18,26 @@
 
 {% endfor %}
 
+<br>
+<hr>
+<br><br>
+<form method="post"> {% csrf_token %}
+    <input type="text" placeholder="Ism yozing" name="ism">
+    <br>
+    <label for="jins">Jinsi</label>
+    <select name="jins" id="jins">
+        <option value="Erkak">Erkak</option>
+        <option value="Ayol">Ayol</option>
+    </select>
+    <br>
+    <input type="number" placeholder="Kitoblar sonini yozing" name="k_soni"><br>
+    <label for="tirik">Tirikmi?</label>
+    <input type="checkbox" name="tirik" id="tirik"><br>
+    <label for="t_sana">Tugilgan sanasi</label>
+    <input type="date" id="t_sana" name="t_sana"><br>
+
+    <button>Qo'shish</button>
+</form>
 
 
 </body>

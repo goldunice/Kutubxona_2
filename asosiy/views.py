@@ -40,6 +40,15 @@ def kitob(request, son):
 
 
 def all_authors(request):
+    if request.method == 'POST':
+        Muallif.objects.create(
+            ism = request.POST.get("ism"),
+            jins = request.POST.get("jins"),
+            kitoblar_soni = request.POST.get("k_soni"),
+            tirik = request.POST.get("tirik") == "on",
+            tugilgan_sana = request.POST.get("t_sana"),
+        )
+        return redirect("/all_authors/")
     word = request.GET.get("search_word")
     result = Muallif.objects.all()
     if word:
