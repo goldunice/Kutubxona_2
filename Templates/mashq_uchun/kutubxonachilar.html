@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kutubxonachilar</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label for="ism">Ism: </label>
+    <input type="text" placeholder="Ism" name="ism" id="ism"><br>
+    <label for="ish_vaqti">Ish vaqti: </label>
+    <select name="ishlash_vaqti" id="ish_vaqti">
+        {% for k_chi in times %}
+        <option value="{{k_chi}}">{{k_chi}}</option>
+        {% endfor %}
+    </select><br>
+    <button>Qo'shish</button>
+</form>
+
+
+</body>
+</html>

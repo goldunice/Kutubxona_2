@@ -33,9 +33,16 @@ class Kitob(models.Model):
         return self.nom
 
 
+TIMES = (
+    ("06:00 dan 12:00 gacha", "06:00 dan 12:00 gacha"),
+    ("12:00 dan 18:00 gacha", "12:00 dan 18:00 gacha"),
+    ("18:00 dan 23:59 gacha", "18:00 dan 23:59 gacha")
+)
+
+
 class Kutubxonachi(models.Model):
     ism = models.CharField(max_length=255)
-    ish_vaqti = models.CharField(max_length=255)
+    ish_vaqti = models.CharField(max_length=255, choices=TIMES)
 
     def __str__(self):
         return self.ism
@@ -48,4 +55,3 @@ class Record(models.Model):
     olingan_sana = models.DateField()
     qaytardi = models.BooleanField(default=False)
     qaytarish_sana = models.DateField()
-

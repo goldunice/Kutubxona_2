@@ -24,5 +24,42 @@
 </div>
 <hr>
 {% endfor %}
+<br>
+<br>
+<form method="post">{% csrf_token %}
+
+    <label for="talaba">Talaba: </label>
+
+    <select name="talaba" id="talaba">
+        {% for talaba in talabalar %}
+        <option value="{{talaba.id}}">{{talaba.ism}}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <label for="kitob">Kitob: </label>
+    <select name="kitobs" id="kitob" style="min-width:100px;">
+        {% for kitob in kitoblar %}
+        <option value="{{kitob.id}}">{{kitob.nom}}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <label for="k_xonachi">Kutubxonachi: </label>
+    <select name="kutubxonachi" id="k_xonachi">
+        {% for kutub_chi in kutubxonachi %}
+        <option value="{{kutub_chi.id}}">{{kutub_chi.ism}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="olingan_sana">Olingan sana: </label>
+    <input type="date" name="olingan_sana" id="olingan_sana"><br>
+    <label for="qaytardi">Qaytardi: </label>
+    <input type="checkbox" name="qaytardi" id="qaytardi"><br>
+    <label for="qaytarish_sana">Qaytaradigan sana: </label>
+    <input type="date" name="qaytarish_sana" id="qaytarish_sana"><br>
+    <button>Qo'shish</button>
+</form>
+
 </body>
 </html>

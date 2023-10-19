@@ -10,8 +10,8 @@
 <hr>
 <br>
 <form method="get">
-<input type="text" placeholder="Qidirish uchun nimadir yoz" name="kalit">
-<button>Qidirish</button>
+    <input type="text" placeholder="Qidirish uchun nimadir yoz" name="kalit">
+    <button>Qidirish</button>
 </form>
 
 <br>
@@ -20,6 +20,24 @@
 <!--<a href="/delete_book/{{book.id}}/"><button>Delete</button></a>-->
 {% endfor %}
 
+<br>
+<hr>
+<br><br>
+<form method="post"> {% csrf_token %}
+    <input type="text" placeholder="Kitob nomi" name="nom">
+    <br>
+    <input type="number" placeholder="Kitob sahifasi" name="k_safifa"><br>
+    <br>
+    <input type="text" placeholder="janr" name="janr">
+    <br>
+    <label for="muallif"></label>
+    <select name="muallif" id="muallif">
+        {% for muallif in mualliflar %}
+        <option value="{{ muallif.id }}">{{muallif.ism}}</option>
+        {% endfor %}
+    </select>
 
+    <button>Qo'shish</button>
+</form>
 </body>
 </html>

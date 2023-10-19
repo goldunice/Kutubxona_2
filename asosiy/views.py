@@ -42,11 +42,11 @@ def kitob(request, son):
 def all_authors(request):
     if request.method == 'POST':
         Muallif.objects.create(
-            ism = request.POST.get("ism"),
-            jins = request.POST.get("jins"),
-            kitoblar_soni = request.POST.get("k_soni"),
-            tirik = request.POST.get("tirik") == "on",
-            tugilgan_sana = request.POST.get("t_sana"),
+            ism=request.POST.get("ism"),
+            jins=request.POST.get("jins"),
+            kitoblar_soni=request.POST.get("k_soni"),
+            tirik=request.POST.get("tirik") == "on",
+            tugilgan_sana=request.POST.get("t_sana"),
         )
         return redirect("/all_authors/")
     word = request.GET.get("search_word")
@@ -67,13 +67,22 @@ def selected_author(request, son):
 
 
 def all_books_2(request):
+    if request.method == 'POST':
+        Kitob.objects.create(
+            nom=request.POST.get("nom"),
+            janr=request.POST.get("janr"),
+            sahifa=request.POST.get("k_sahifa"),
+            muallif=Muallif.objects.get(id=request.POST.get("muallif"))
+        )
+        return redirect("/all_books/")
     soz = request.GET.get("kalit")
     natija = Kitob.objects.all()
     if soz:
         natija = natija.filter(nom__contains=soz) or natija.filter(muallif__ism__contains=soz)
 
     content = {
-        "all_books_2": natija
+        "all_books_2": natija,
+        "mualliflar": Muallif.objects.all()
     }
     return render(request, 'mashq_uchun/all_books.html', content)
 
@@ -86,12 +95,26 @@ def selected_book(request, son):
 
 
 def record(request):
+    if request.method == 'POST':
+        Record.objects.create(
+            talaba=Talaba.objects.get(id=request.POST.get("talaba")),
+            kitob=Kitob.objects.get(id=request.POST.get("kitobs")),
+            kutubxonachi=Kutubxonachi.objects.get(id=request.POST.get("kutubxonachi")),
+            olingan_sana=request.POST.get("olingan_sana"),
+            qaytardi=request.POST.get("qaytardi") == "on",
+            qaytarish_sana=request.POST.get("qaytarish_sana")
+        )
+        return redirect("/record/")
+
     word = request.GET.get("search_word")
     result = Record.objects.all()
     if word:
         result = result.filter(talaba__ism=word)
     content = {
-        "record": result
+        "record": result,
+        "talabalar": Talaba.objects.all(),
+        "kitoblar": Kitob.objects.all(),
+        "kutubxonachi": Kutubxonachi.objects.all()
     }
     return render(request, 'mashq_uchun/record.html', content)
 
@@ -194,3 +217,18 @@ def talabalar(request):
         "talabalar": Talaba.objects.all()
     }
     return render(request, "mashq_uchun/talabalar.html", content)
+
+
+def kutubxonachilar(request):
+    if request.method == 'POST':
+        Kutubxonachi.objects.create(
+            ism=request.POST.get("ism"),
+            ish_vaqti=request.POST.get("ishlash_vaqti")
+        )
+        return redirect("/kutubxonachilar/")
+    times = [time[0] for time in TIMES]
+    content = {
+        "kutubxonachilar": Kutubxonachi.objects.all(),
+        "times": times
+    }
+    return render(request, 'mashq_uchun/kutubxonachilar.html', content)
