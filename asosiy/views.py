@@ -232,3 +232,29 @@ def kutubxonachilar(request):
         "times": times
     }
     return render(request, 'mashq_uchun/kutubxonachilar.html', content)
+
+
+def talaba_update(request, pk):
+    if request.method == 'POST':
+        Talaba.objects.filter(id=pk).update(
+            kurs=request.POST.get("kurs"),
+            kitob_soni=request.POST.get("kitob_soni")
+        )
+        return redirect("/talabalar/")
+    content = {
+        "talaba": Talaba.objects.get(id=pk)
+    }
+    return render(request, "mashq_uchun/talaba_update.html", content)
+
+
+def kitob_update(request, pk):
+    if request.method == 'POST':
+        Kitob.objects.filter(id=pk).update(
+            sahifa=request.POST.get("k_safifa")
+        )
+        return redirect("/all_books/")
+
+    content = {
+        "kitob": Kitob.objects.get(id=pk)
+    }
+    return render(request, "mashq_uchun/kitob_update.html", content)

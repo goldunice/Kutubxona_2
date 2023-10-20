@@ -7,7 +7,8 @@
 <body>
 <br>
  {% for i in talabalar %}
- <h2>ID -- {{i.id}}, Ismi -- {{i.ism}}, Kurs -- {{i.kurs}}, Kitoblari soni -- {{i.kitob_soni}}</h2>
+ <h2>ID -- {{i.id}}, Ismi -- {{i.ism}}, Kurs -- {{i.kurs}}, Kitoblari soni -- {{i.kitob_soni}}</h2><br>
+<a href="/talaba_update/{{i.id}}/"><button>Edit</button></a>
  {% endfor %}
 
 <br>

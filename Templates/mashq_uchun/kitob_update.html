@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitoblarni tahrirlash</title>
+</head>
+<body>
+<form method="post"> {% csrf_token %}
+    <input type="text" name="nom" value="{{kitob.nom}}" disabled>
+    <br>
+    <input type="number" name="k_safifa" value="{{kitob.sahifa}}"><br>
+    <br>
+    <input type="text" name="janr" value="{{kitob.janr}}" disabled>
+    <br>
+    <label for="muallif"></label>
+    <input type="text" id="muallif" name="muallif" value="{{kitob.muallif.ism}}" disabled>
+<!--    <select name="muallif" id="muallif">-->
+<!--        {% for muallif in mualliflar %}-->
+<!--        <option value="{{ muallif.id }}">{{muallif.ism}}</option>-->
+<!--        {% endfor %}-->
+<!--    </select>-->
+
+    <button>Saqlash</button>
+</form>
+</body>
+</html>

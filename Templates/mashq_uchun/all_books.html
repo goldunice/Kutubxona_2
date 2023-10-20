@@ -16,8 +16,8 @@
 
 <br>
 {% for book in all_books_2 %}
-<h2>{{book.id}} -- {{book.nom}} -- {{book.muallif.ism}}</h2>
-<!--<a href="/delete_book/{{book.id}}/"><button>Delete</button></a>-->
+<h2>ID -- {{book.id}} -- {{book.nom}} -- {{book.muallif.ism}} -- {{book.sahifa}}</h2><br>
+<a href="/kitob_update/{{book.id}}/"><button>Edit</button></a>
 {% endfor %}
 
 <br>

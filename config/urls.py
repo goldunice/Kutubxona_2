@@ -5,7 +5,7 @@ from asosiy.views import (greeting, homepage, all_books, ayol_muallif_kitoblari,
                           alive_authors, top_three_books, top_three_authors, the_last_three_record,
                           alive_author_books, the_same_genre_books, the_oldest_authors, books_less_ten,
                           selected_record, graduated_student, delete_book, delete_author, delete_record,
-                          talabalar, kutubxonachilar)
+                          talabalar, kutubxonachilar, talaba_update, kitob_update)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +33,8 @@ urlpatterns = [
     path('delete_author/<int:son>/', delete_author),
     path('delete_record/<int:son>/', delete_record),
     path('talabalar/', talabalar),
-    path('kutubxonachilar/', kutubxonachilar)
+    path('kutubxonachilar/', kutubxonachilar),
+    path('talaba_update/<int:pk>/', talaba_update),
+    path('kitob_update/<int:pk>/', kitob_update),
 
 ]
